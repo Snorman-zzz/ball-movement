@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ball Movement</title>
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #ball {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+<div id="ball"></div>
+
+<script>
+    // Get ball element
+    var ball = document.getElementById("ball");
+
+    // Get the dimensions of the screen
+    var screenWidth = window.innerWidth;
+    var screenHeight = window.innerHeight;
+
+    // Initial position of the ball at the center of the screen
+    var positionX = screenWidth / 2;
+    var positionY = screenHeight / 2;
+
+    // Function to update ball position
+    function updateBallPosition() {
+        ball.style.left = positionX + "px";
+        ball.style.top = positionY + "px";
+    }
+
+    // Function to handle keydown event
+    function handleKeyDown(event) {
+        var keyCode = event.keyCode;
+
+        // Move ball based on arrow keys
+        if (keyCode === 37) { // Left arrow
+            positionX -= 10;
+        } else if (keyCode === 38) { // Up arrow
+            positionY -= 10;
+        } else if (keyCode === 39) { // Right arrow
+            positionX += 10;
+        } else if (keyCode === 40) { // Down arrow
+            positionY += 10;
+        }
+
+        // Update ball position
+        updateBallPosition();
+    }
+
+    // Attach keydown event listener to the document
+    document.addEventListener("keydown", handleKeyDown);
+</script>
+</body>
+</html>
